@@ -41,8 +41,8 @@
             $last_check_in_day = date("d/m/Y", strtotime($last_check_in));
             $today=date("d/m/Y");
             ?>
-            <div> <?php echo $last_check_in_day; ?></div> <br/>
-            <div> <?php echo  date("d/m/Y"); ?> </div> <br/>
+<!--            <div> <?php //echo $last_check_in_day; ?></div> <br/>
+            <div> <?php //echo  date("d/m/Y"); ?> </div> <br/>-->
             
             
             <?php
@@ -90,8 +90,8 @@
             $last_check_out_day = date("d/m/Y", strtotime($last_check_out));
             $today=date("d/m/Y");
             ?>
-            <div> <?php echo $last_check_out_day; ?></div> <br/>
-            <div> <?php echo  date("d/m/Y"); ?> </div> <br/>
+<!--            <div> <?php //echo $last_check_out_day; ?></div> <br/>
+            <div> <?php //echo  date("d/m/Y"); ?> </div> <br/>-->
                 
             <?php
             //delete last check-out  
@@ -104,7 +104,7 @@
 
                 $result2 = mysqli_query($dbc, $query2) 
                         or die("Error querying DB ");
-                print_r($_POST);
+//                print_r($_POST);
                 ?>
                 <div> <?php echo  "your check-out has been updated" ;?> </div> <br/>
 

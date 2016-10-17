@@ -35,13 +35,13 @@
                             . "time(a.datetime) as time "
                             . "from attendance a "
                             . "left join employee e on a.employee_id = e.id "
-                            . "where process = 1 ;";
+                            . "where process = 1 ";
                     
                     $query2 = "select *, e.name as employee_name, date(a.datetime) as date, "
                             . "time(a.datetime) as time "
                             . "from attendance a "
                             . "left join employee e on a.employee_id = e.id "
-                            . "where process = 2 ;";
+                            . "where process = 2 ";
                     
                     
 
