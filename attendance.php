@@ -61,8 +61,8 @@
             <tr>
                 <td>name : </td>
                 <td>				
-                    <select name="name">
-                        <option selected >  Select your name </option>
+                    <select name="name" required>
+                        <option selected value="" >  Select your name </option>
                         <?php
 
                         ////DB connection 
