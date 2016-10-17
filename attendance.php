@@ -96,7 +96,7 @@
             <?php
             //delete last check-out  
             
-            if ( $last_check_out_day=$today){ 
+            if ( $last_check_out_day==$today){ 
                 $query2 = "update attendance "
                         . "set deleted_at = NOW() "
                         . "where employee_id= (select id from employee where name = '$name') "
@@ -104,6 +104,7 @@
 
                 $result2 = mysqli_query($dbc, $query2) 
                         or die("Error querying DB ");
+                print_r($_POST);
                 ?>
                 <div> <?php echo  "your check-out has been updated" ;?> </div> <br/>
 
@@ -118,7 +119,7 @@
             
             mysqli_close($dbc);
             
-            print_r($_POST);
+            
 
         }
         }
