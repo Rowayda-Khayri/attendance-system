@@ -39,8 +39,8 @@
             $last_check_in_day = date("d/m/Y", strtotime($last_check_in));
             $today=date("d/m/Y");
             ?>
-            <div> <?php echo $last_check_in_day; ?></div> <br/>
-            <div> <?php echo  date("d/m/Y"); ?> </div> <br/>
+<!--            <div> <?php //echo $last_check_in_day; ?></div> <br/>
+            <div> <?php //echo  date("d/m/Y"); ?> </div> <br/>-->
             
             
             <?php
@@ -68,9 +68,7 @@
             if(!empty($_POST['name'])&&isset($_POST['check-out'])) {  //on btn check-out click
                 
             $name=filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
-            ?>
-            <div class="alert alert-success"> <?php echo " Hello $name, you are checked-out "; ?></div> <br/>
-            <?php
+            
             ////DB connection 
             
             $dbc=  mysqli_connect('localhost', 'root' , 'iti36', 'attendance_system_db')
@@ -109,7 +107,11 @@
                 <div class="alert alert-success"> <?php echo  "your check-out has been updated" ;?> </div> <br/>
 
                 <?php  
-            } 
+            } else {
+                ?>
+            <div class="alert alert-success"> <?php echo " Hello $name, you are checked-out "; ?></div> <br/>
+            <?php
+            }
             
             $query = "insert into attendance (process,datetime,employee_id) "
                     . "values(2,NOW(),(select id from employee where name='$name'));";
