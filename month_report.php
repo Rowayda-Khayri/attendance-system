@@ -15,13 +15,15 @@
 		</tr>
 		
                 
-                <?php
+                 <?php
                     ////DB connection 
 
                     $dbc=  mysqli_connect('localhost', 'root' , 'iti36', 'attendance_system_db')
                     or die('Error in db connection');
 
-                    $query = "SELECT * FROM attendance ;";
+                    $query = "select *, e.name as employee_name "
+                            . "from attendance a "
+                            . "left join employee e on a.employee_id = e.id ;";
 
                     $result = mysqli_query($dbc, $query);
 
@@ -29,9 +31,13 @@
                          $employees=mysqli_fetch_array($result);
                     ?>
                         <tr>
-                            <td><?php echo $employees['id'] ;?></td>
+                            <td><?php echo $employees['employee_name'] ;?></td>
+                            <td><?php echo $employees['employee_name'] ;?></td>
+                            <td><?php echo $employees['employee_name'] ;?></td>
+                            <td><?php echo $employees['employee_name'] ;?></td>
                         </tr>
                             <?php }?>
+                        
                         
                         
 
