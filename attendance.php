@@ -18,9 +18,7 @@
             
             
             $name=filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
-            ?>
-            <div class="alert alert-success"> <?php echo " Hello $name, you are checked-in "; ?></div> <br/>
-            <?php
+           
             
             ////DB connection 
             
@@ -41,8 +39,8 @@
             $last_check_in_day = date("d/m/Y", strtotime($last_check_in));
             $today=date("d/m/Y");
             ?>
-<!--            <div> <?php //echo $last_check_in_day; ?></div> <br/>
-            <div> <?php //echo  date("d/m/Y"); ?> </div> <br/>-->
+            <div> <?php echo $last_check_in_day; ?></div> <br/>
+            <div> <?php echo  date("d/m/Y"); ?> </div> <br/>
             
             
             <?php
@@ -56,7 +54,9 @@
 
                 mysqli_close($dbc);
 
-                
+                 ?>
+            <div class="alert alert-success"> <?php echo " Hello $name, you are checked-in "; ?></div> <br/>
+            <?php
             } 
              else {// already checked-in today
                 ?><div class="alert alert-warning"> <?php echo  "you have already checked-in today"; ?> </div> <br/>
