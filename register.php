@@ -35,7 +35,8 @@
                 <?php
         }
 //        print_r($_POST);
-    }       
+    }   
+    error_reporting(E_ALL & ~E_NOTICE);    
  ?>
 
 <form method = "post"  action = "register.php">

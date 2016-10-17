@@ -53,7 +53,7 @@
         }
         }
         ////////////////////////////////////////////////////////
-           
+        error_reporting(E_ALL & ~E_NOTICE);   
  ?>
     <form method = "post"  action = "attendance.php">
 	<table>

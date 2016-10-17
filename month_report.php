@@ -18,6 +18,7 @@
                  <?php
                     ////DB connection 
 
+                    
                     $dbc=  mysqli_connect('localhost', 'root' , 'iti36', 'attendance_system_db')
                     or die('Error in db connection');
 
@@ -32,6 +33,8 @@
                             . "from attendance a "
                             . "left join employee e on a.employee_id = e.id "
                             . "where process = 2 ;";
+                    
+                    
 
                     $result = mysqli_query($dbc, $query);
                     
@@ -48,7 +51,11 @@
                             <td><?php echo $employees['time'] ;?></td>
                             <td><?php echo $employees2['time'] ;?></td>
                         </tr>
-                            <?php }?>
+                            <?php }
+                            
+                            
+                            error_reporting(E_ALL & ~E_NOTICE);
+                            ?>
                         
                         
                         
