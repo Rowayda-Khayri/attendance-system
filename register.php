@@ -6,66 +6,59 @@
 <body>
     <?php
     
-    if(isset($_POST)){
-       $name=filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
+    if(isset($_POST['submit'])){  // check for submission 
+        
+        $name=filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
+        $organization_name=filter_input(INPUT_POST, "organization_name", FILTER_SANITIZE_STRING);
 
-        if(!empty($_POST['name'])&&!empty($_POST['organization_name'])) 
-        {
+        if(!empty($_POST['name'])&&!empty($_POST['organization_name'])) {  
             ?>
-        <div> <?php echo " Hello , you are registered "; ?></div>
+            <div> <?php echo " Hello $name, you are registered "; ?></div> <br/>
             <?php
             ////DB connection 
         
             $dbc=  mysqli_connect('localhost', 'root' , 'iti36', 'attendance_system_db')
-            or die('Error in db connection');
+                    or die('Error in db connection');
 
             $query = "INSERT INTO employee ( name,organization,created_at )
                        VALUES
-                       ( '$name','organization_name',NOW() );";
+                       ( '$name','$organization_name',NOW() );";
 
-
-            $result = mysqli_query($dbc, $query);
-
-
+            $result = mysqli_query($dbc, $query) 
+                    or die("Error querying DB ");
+            
             mysqli_close($dbc);
 
-          
-
-        } else {
-            if(empty($_POST['name'])||empty($_POST['organization_name'])) 
-        {?>
-            <div> <?php echo " please fill the 2 fields : "; ?> </div> <br/>
-            <?php
+        } else {  // if empty name or organization :
+            ?>
+               <div> <?php echo " please fill the 2 fields : "; ?> </div> <br/>
+                <?php
         }
-        }
-        
-        
-        
-        
-} ?>
+//        print_r($_POST);
+    }       
+ ?>
 
 <form method = "post"  action = "register.php">
 	<table>
 		<tr>
 			<td>name : </td>
 			<td>				
-				<input name = "name"/>
+                            <input name = "name" required>
 			</td>		
 		</tr>
 		
 		<tr>
 			<td>organization name : </td>
 			<td>				
-				<input name = "organization_name"/>
+                            <input name = "organization_name" required>
 			</td>		
 		</tr>
                 
                 
-
 		<tr>
 		
 		<td> 
-			<input  type="submit" value="Submit" />  				
+                    <input  type="submit" name="submit" />  				
 			
 		</td>
 		</tr>
