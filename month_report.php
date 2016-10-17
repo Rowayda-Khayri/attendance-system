@@ -21,7 +21,7 @@
                     $dbc=  mysqli_connect('localhost', 'root' , 'iti36', 'attendance_system_db')
                     or die('Error in db connection');
 
-                    $query = "select *, e.name as employee_name "
+                    $query = "select *, e.name as employee_name, date(a.datetime) as date "
                             . "from attendance a "
                             . "left join employee e on a.employee_id = e.id ;";
 
@@ -32,7 +32,7 @@
                     ?>
                         <tr>
                             <td><?php echo $employees['employee_name'] ;?></td>
-                            <td><?php echo $employees['employee_name'] ;?></td>
+                            <td><?php echo $employees['date'] ;?></td>
                             <td><?php echo $employees['employee_name'] ;?></td>
                             <td><?php echo $employees['employee_name'] ;?></td>
                         </tr>
