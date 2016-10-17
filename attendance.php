@@ -33,18 +33,32 @@
             $result4 = mysqli_query($dbc, $query4) 
                     or die("Error querying DB ");
             
+            $row= mysqli_fetch_array($result4);
+            $last_check_in = $row[0];
+            $last_check_in_day = date("d/m/Y", strtotime($last_check_in));
+            $today=date("d/m/Y");
+            ?>
+            <div> <?php echo $last_check_in_day; ?></div> <br/>
+            <div> <?php echo  date("d/m/Y"); ?> </div> <br/>
             
             
+            <?php
             
-            $query = "insert into attendance (process,datetime,employee_id) "
-                    . "values(1,NOW(),(select id from employee where name='$name'));";
+            if ( $last_check_in_day!=$today){
+                $query = "insert into attendance (process,datetime,employee_id) "
+                        . "values(1,NOW(),(select id from employee where name='$name'));";
 
-            $result = mysqli_query($dbc, $query) 
-                    or die("Error querying DB ");
+                $result = mysqli_query($dbc, $query) 
+                        or die("Error querying DB ");
+
+                mysqli_close($dbc);
+
+                print_r($_POST);
+//            }  else {// already checked-in today
+//                ?><div> <?php //echo  "you have already checked-in today"; ?> </div> <br/>
+            <?php}
             
-            mysqli_close($dbc);
             
-            print_r($_POST);
             //////////////////////////////////////////////////////////////////
         } else {
             if(!empty($_POST['name'])&&isset($_POST['check-out'])) {  //on btn check-out click
@@ -78,8 +92,8 @@
             <tr>
                 <td>name : </td>
                 <td>				
-                    <select name="name">
-                        <option selected >  Select your name </option>
+                    <select name="name" required>
+                        <option selected value="">  Select your name </option>
                         <?php
 
                         ////DB connection 
