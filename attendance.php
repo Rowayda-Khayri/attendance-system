@@ -64,16 +64,11 @@
                     <select name="name" required>
                         <option selected value="" >  Select your name </option>
                         <?php
-
                         ////DB connection 
-
                         $dbc=  mysqli_connect('localhost', 'root' , 'iti36', 'attendance_system_db')
                         or die('Error in db connection');
-
                         $query = "SELECT name FROM employee ;";
-
                         $result = mysqli_query($dbc, $query);
-
                         
                         for($i=0;$i<=$employees;$i++) {
                             $employees=mysqli_fetch_array($result);
