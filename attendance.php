@@ -53,10 +53,11 @@
 
                 mysqli_close($dbc);
 
-                print_r($_POST);
-//            }  else {// already checked-in today
-//                ?><div> <?php //echo  "you have already checked-in today"; ?> </div> <br/>
-            <?php}
+                
+            } 
+             else {// already checked-in today
+                ?><div> <?php echo  "you have already checked-in today"; ?> </div> <br/>
+            <?php }
             
             
             //////////////////////////////////////////////////////////////////
@@ -113,6 +114,8 @@
 
                             <?php
                             mysqli_close($dbc);
+                            
+                            
                         } 
                         ?>
                     </select>
