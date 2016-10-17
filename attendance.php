@@ -47,7 +47,7 @@
             
             <?php
             
-            if ( $last_check_in_day=$today){ // insert check-in only if not checked-in today
+            if ( $last_check_in_day!=$today){ // insert check-in only if not checked-in today
                 $query = "insert into attendance (process,datetime,employee_id) "
                         . "values(1,NOW(),(select id from employee where name='$name'));";
 
