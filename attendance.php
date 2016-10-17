@@ -41,7 +41,8 @@
             $dbc=  mysqli_connect('localhost', 'root' , 'iti36', 'attendance_system_db')
                     or die('Error in db connection');
 
-            $query = ";";
+            $query = "insert into attendance (process,datetime,employee_id) "
+                    . "values(2,NOW(),(select id from employee where name='$name'));";
 
             $result = mysqli_query($dbc, $query) 
                     or die("Error querying DB ");
