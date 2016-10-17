@@ -1,6 +1,14 @@
 
 <html>
 <head>
+    
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 </head>
 <body>
     
@@ -18,7 +26,8 @@
                  <?php
                     ////DB connection 
 
-                    
+                    error_reporting(E_ALL & ~E_NOTICE);
+                                                                         
                     $dbc=  mysqli_connect('localhost', 'root' , 'iti36', 'attendance_system_db')
                     or die('Error in db connection');
 
@@ -54,28 +63,10 @@
                             <?php }
                             
                             
-                            error_reporting(E_ALL & ~E_NOTICE);
+                            
                             ?>
                         
-                        
-                        
-
-<!--                        <?php
-                        ////DB connection 
-
-//                        $dbc=  mysqli_connect('localhost', 'root' , 'iti36', 'attendance_system_db')
-//                        or die('Error in db connection');
-//
-//                        $query = "SELECT name FROM employee ;";
-//
-//                        $result = mysqli_query($dbc, $query);
-//
-//                        
-//                        for($i=0;$i<=$employees;$i++) {
-//                            $employees=mysqli_fetch_array($result);
-//                            ?>
-                            <option > //<?php //echo $employees[0] ;?>  </option>
-		-->
+                     
 	</table>
 	
 </form>
