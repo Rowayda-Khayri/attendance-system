@@ -19,7 +19,7 @@
             
             $name=filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
             ?>
-            <div> <?php echo " Hello $name, you are checked-in "; ?></div> <br/>
+            <div class="alert alert-success"> <?php echo " Hello $name, you are checked-in "; ?></div> <br/>
             <?php
             
             ////DB connection 
@@ -47,7 +47,7 @@
             
             <?php
             
-            if ( $last_check_in_day!=$today){ // insert check-in only if not checked-in today
+            if ( $last_check_in_day=$today){ // insert check-in only if not checked-in today
                 $query = "insert into attendance (process,datetime,employee_id) "
                         . "values(1,NOW(),(select id from employee where name='$name'));";
 
@@ -59,7 +59,7 @@
                 
             } 
              else {// already checked-in today
-                ?><div> <?php echo  "you have already checked-in today"; ?> </div> <br/>
+                ?><div class="alert alert-warning"> <?php echo  "you have already checked-in today"; ?> </div> <br/>
             <?php }
             
             
@@ -69,7 +69,7 @@
                 
             $name=filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
             ?>
-            <div> <?php echo " Hello $name, you are checked-out "; ?></div> <br/>
+            <div class="alert alert-success"> <?php echo " Hello $name, you are checked-out "; ?></div> <br/>
             <?php
             ////DB connection 
             
@@ -106,7 +106,7 @@
                         or die("Error querying DB ");
 //                print_r($_POST);
                 ?>
-                <div> <?php echo  "your check-out has been updated" ;?> </div> <br/>
+                <div class="alert alert-success"> <?php echo  "your check-out has been updated" ;?> </div> <br/>
 
                 <?php  
             } 
@@ -127,11 +127,13 @@
         error_reporting(E_ALL & ~E_NOTICE);   
  ?>
     <form method = "post"  action = "attendance.php">
-	<table>
+        <nav class="navbar-inverse" style="height: 50px; text-align: center; line-height: 50px;color: white;font-size: 24;"> Attendance Page</nav>
+        <br/><br/>
+	<table class="table">
             <tr>
-                <td>name : </td>
+                <td>Name : </td>
                 <td>				
-                    <select name="name" required>
+                    <select name="name" class="" required>
                         <option selected value="">  Select your name </option>
                         <?php
 
@@ -163,8 +165,8 @@
             <tr>
 
                 <td>				
-                    <input  type="submit" name="check-in" value="check-in" class="btn btn-primary"/>
-                    <input  type="submit" name="check-out" value="check-out" class="btn btn-primary" />
+                    <input  type="submit" name="check-in" value="Check-in" class="btn btn-primary"/>
+                    <input  type="submit" name="check-out" value="Check-out" class="btn btn-primary" />
                 </td>		
             </tr>
 

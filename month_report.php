@@ -14,12 +14,14 @@
     
 
     <form method = "post"  action = "month_report.php">
-	<table>
+	<nav class="navbar-inverse" style="height: 50px; text-align: center; line-height: 50px;color: white;font-size: 24;"> Month Report</nav>
+        <br/><br/>
+        <table class="table">
 		<tr>
-			<td>employee : </td>
-			<td>date : </td>
-                        <td>check-in time : </td>
-                        <td>check-out time : </td>
+			<td>Employee : </td>
+			<td>Date : </td>
+                        <td>Check-in Time : </td>
+                        <td>Check-out Time : </td>
 		</tr>
 		
                 

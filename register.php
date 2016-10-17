@@ -21,7 +21,7 @@
 
         if(!empty($_POST['name'])&&!empty($_POST['organization_name'])) {  
             ?>
-            <div> <?php echo " Hello $name, you are registered "; ?></div> <br/>
+            <div class="alert alert-success"> <?php echo " Hello $name, you are registered "; ?></div> <br/>
             <?php
             ////DB connection 
         
@@ -39,7 +39,7 @@
 
         } else {  // if empty name or organization :
             ?>
-               <div> <?php echo " please fill the 2 fields : "; ?> </div> <br/>
+               <div class="alert alert-danger"> <?php echo " please fill the 2 fields : "; ?> </div> <br/>
                 <?php
         }
 //        print_r($_POST);
@@ -48,16 +48,18 @@
  ?>
 
 <form method = "post"  action = "register.php">
-	<table>
+    <nav class="navbar-inverse" style="height: 50px; text-align: center; line-height: 50px;color: white;font-size: 24;" > Registration Page</nav>
+    <br/><br/>
+    <table class="table">
 		<tr>
-			<td>name : </td>
+			<td>Name : </td>
 			<td>				
                             <input name = "name" required>
 			</td>		
 		</tr>
 		
 		<tr>
-			<td>organization name : </td>
+			<td>Organization Name : </td>
 			<td>				
                             <input name = "organization_name" required>
 			</td>		
@@ -72,10 +74,11 @@
 		</td>
 		</tr>
 	</table>
+    
 	
 </form>
 
 </body>
 </html>
 
-   <?php print_r($_POST); ?>
+   <?php // print_r($_POST); ?>
