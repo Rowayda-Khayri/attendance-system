@@ -58,7 +58,7 @@
 		<tr>
 		
 		<td> 
-                    <input  type="submit" name="submit" />  				
+                    <input  type="submit" name="submit" value="Register" />  				
 			
 		</td>
 		</tr>
@@ -69,4 +69,4 @@
 </body>
 </html>
 
-   
+   <?php print_r($_POST); ?>

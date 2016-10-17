@@ -4,40 +4,57 @@
 <head>
 </head>
 <body>
-    <?php
     
-    if(isset($_POST['submit'])){  // check for submission 
-        
-        $name=filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
-        $organization_name=filter_input(INPUT_POST, "organization_name", FILTER_SANITIZE_STRING);
-
-        if(!empty($_POST['name'])&&!empty($_POST['organization_name'])) {  
+    <?php 
+    
+    if(!empty($_POST['name'])&&isset($_POST['check-in'])) {  //on btn check-in click
+            
+            
+            $name=filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
             ?>
-            <div> <?php echo " Hello $name, you are registered "; ?></div> <br/>
+            <div> <?php echo " Hello $name, you are checked-in "; ?></div> <br/>
             <?php
             ////DB connection 
         
             $dbc=  mysqli_connect('localhost', 'root' , 'iti36', 'attendance_system_db')
                     or die('Error in db connection');
 
-            $query = "INSERT INTO employee ( name,organization,created_at )
-                       VALUES
-                       ( '$name','$organization_name',NOW() );";
+            $query = "insert into attendance (process,datetime,employee_id) "
+                    . "values(1,NOW(),(select id from employee where name='$name'));";
 
             $result = mysqli_query($dbc, $query) 
                     or die("Error querying DB ");
             
             mysqli_close($dbc);
-
-        } else {  // if empty name or organization :
+            
+            print_r($_POST);
+            //////////////////////////////////////////////////////////////////
+        } else {
+            if(!empty($_POST['name'])&&isset($_POST['check-out'])) {  //on btn check-out click
+                
+            $name=filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
             ?>
-               <div> <?php echo " please fill the 2 fields : "; ?> </div> <br/>
-                <?php
-        }
-//        print_r($_POST);
-    }       
- ?>
+            <div> <?php echo " Hello $name, you are checked-out "; ?></div> <br/>
+            <?php
+            ////DB connection 
+        
+            $dbc=  mysqli_connect('localhost', 'root' , 'iti36', 'attendance_system_db')
+                    or die('Error in db connection');
 
+            $query = ";";
+
+            $result = mysqli_query($dbc, $query) 
+                    or die("Error querying DB ");
+            
+            mysqli_close($dbc);
+            
+            print_r($_POST);
+
+        }
+        }
+        ////////////////////////////////////////////////////////
+           
+ ?>
     <form method = "post"  action = "attendance.php">
 	<table>
             <tr>
@@ -73,7 +90,8 @@
             <tr>
 
                 <td>				
-                    <input  type="submit" value="check-in" />
+                    <input  type="submit" name="check-in" value="check-in"/>
+                    <input  type="submit" name="check-out" value="check-out" />
                 </td>		
             </tr>
 
