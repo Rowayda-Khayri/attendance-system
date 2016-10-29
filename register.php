@@ -1,5 +1,6 @@
 
 
+
 <html>
 <head>
     
@@ -18,7 +19,6 @@
         
         $name=filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
         $organization_name=filter_input(INPUT_POST, "organization_name", FILTER_SANITIZE_STRING);
-
         if(!empty($_POST['name'])&&!empty($_POST['organization_name'])) {  
             ?>
             <div class="alert alert-success"> <?php echo " Hello $name, you are registered "; ?></div> <br/>
@@ -27,16 +27,13 @@
         
             $dbc=  mysqli_connect('localhost', 'root' , 'iti36', 'attendance_system_db')
                     or die('Error in db connection');
-
             $query = "INSERT INTO employee ( name,organization,created_at )
                        VALUES
                        ( '$name','$organization_name',NOW() );";
-
             $result = mysqli_query($dbc, $query) 
                     or die("Error querying DB ");
             
             mysqli_close($dbc);
-
         } else {  // if empty name or organization :
             ?>
                <div class="alert alert-danger"> <?php echo " please fill the 2 fields : "; ?> </div> <br/>
